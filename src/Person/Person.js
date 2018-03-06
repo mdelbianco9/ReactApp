@@ -2,9 +2,14 @@
 
 import React from 'react';
 
-const person = () => {
+const person = (props) => {
 	// WHen using the {} you can only use simple one line expressions, nothing too crazy
-	return <p>I am a person and Im {Math.floor(Math.random() * 30)} years old</p>
+	return (
+		<div>
+			<p onClick={props.click}>I am a {props.name} and Im {props.age} years old</p>
+			<p>{props.children}</p>
+		</div>
+		)
 };
 
 

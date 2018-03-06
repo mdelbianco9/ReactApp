@@ -4,20 +4,46 @@ import Person from './Person/Person';
 
 // Nest All components into this component! 
 class App extends Component {
+ state = {
+    persons: [
+      { name: 'Marcus', age: 26},
+      { name: 'John', age: 19},
+      { name: 'Mark', age: 30}
+    ]
+  }
+
+  switchNameHandler = () => {
+    this.setState({
+      persons: [
+        { name: 'Marcosious', age: 26},
+        { name: 'John', age: 19},
+        { name: 'Mark', age: 40}
+    ]
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>Hello, I am React App</h1>
-        <p> this is really working </p>
-        // This is the Person component
-        <Person />
-        <Person />
-        <Person />
+        <button onClick={this.switchNameHandler}>Switch Name</button>
+
+        <Person 
+        name={this.state.persons[0].name} 
+        age={this.state.persons[0].age} />
+
+        <Person 
+        name={this.state.persons[1].name} 
+        age={this.state.persons[1].age} />
+
+        <Person 
+        name={this.state.persons[2].name} 
+        age={this.state.persons[2].age}
+        click={this.switchNameHandler}>My Hobbies: Racing</Person>
+
+        
       </div>
     );
 
-     /// This code is what the above code gets compiled to. Above is easier to write.
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work?'));
   }
 }
 
