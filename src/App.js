@@ -12,10 +12,10 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     this.setState({
       persons: [
-        { name: 'Marcosious', age: 26},
+        { name: newName, age: 26},
         { name: 'John', age: 19},
         { name: 'Mark', age: 40}
     ]
@@ -25,7 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <button onClick={this.switchNameHandler.bind(this, 'Maxamillion')}>Switch Name</button>
 
         <Person 
         name={this.state.persons[0].name} 
@@ -38,7 +38,7 @@ class App extends Component {
         <Person 
         name={this.state.persons[2].name} 
         age={this.state.persons[2].age}
-        click={this.switchNameHandler}>My Hobbies: Racing</Person>
+        click={this.switchNameHandler.bind(this, 'Max!')}>My Hobbies: Racing</Person>
 
         
       </div>
