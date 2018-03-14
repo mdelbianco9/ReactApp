@@ -6,15 +6,17 @@ import Person from './Person/Person';
 class App extends Component {
  state = {
     persons: [
-      { name: 'Marcus', age: 26},
-      { name: 'John', age: 19},
-      { name: 'Mark', age: 30}
+      { id: 'dfce4', name: 'Marcus', age: 26},
+      { id: 'dsxv4', name: 'John', age: 19},
+      { id: 'gbds5', name: 'Mark', age: 30}
     ],
     otherState: 'some value',
     showPersons: false
   }
 
-  nameChangedHandler = (event) => {
+  nameChangedHandler = (event, id) => {
+    const person = this.state.persons.findIndex();
+
     this.setState({
       persons: [
         { name: 'Max', age: 26},
@@ -66,7 +68,9 @@ value sinside the persons arry in state*/
               return <Person 
                       click={() => this.deletePersonHandler(index)}
                       name={person.name} 
-                      age={person.age} />
+                      age={person.age}
+                      key={person.id}
+                      changed={(event) => this.nameChangedHandler(event, person.id)} />
             })}
           </div> 
           );
